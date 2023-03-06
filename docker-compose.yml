@@ -4,7 +4,7 @@ version: '3'
 
 services:
   #service名を指定
-  python3.9_arm64:
+  python3.9:
     #実行時に常に再起動するように指定
     #ここでは「always」で常に再起動を指定している
     restart: always
@@ -16,7 +16,7 @@ services:
       #使用するdockerfile名を指定
       #ここでは「Dockerfile」と指定している
       dockerfile: Dockerfile
-    container_name: "python3.9_arm64"
+    container_name: "python3.9"
     #標準入出力(ターミナル？）をコンテナと結びつける設定
     #ここでは「true」で結びつけている？
     stdin_open: true
