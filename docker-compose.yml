@@ -1,0 +1,30 @@
+#docker-composeのファイルバージョンを指定
+#ここでは「3」でバージョン3を指定している
+version: '3'
+
+services:
+  #service名を指定
+  python3.9_arm64:
+    #実行時に常に再起動するように指定
+    #ここでは「always」で常に再起動を指定している
+    restart: always
+    #立ち上げの設定を指定
+    build:
+      #dockerfileの参照先を指定
+      #ここでは「.」でカレントディレクトリを指定している
+      context: .
+      #使用するdockerfile名を指定
+      #ここでは「Dockerfile」と指定している
+      dockerfile: Dockerfile
+    container_name: "python3.9_arm64"
+    #標準入出力(ターミナル？）をコンテナと結びつける設定
+    #ここでは「true」で結びつけている？
+    stdin_open: true
+    #キーボード入力をコンテナが受け付けるようにする設定
+    #ここでは「true」で結びつけている？
+    tty: true
+    #dockerfileがあるカレントディレクトリとコンテナ内部のディレクトリをマウントする設定
+    #ホスト側:コンテナ側　の順番で記載する
+    #ここでは、ホスト側「.」でカレント：コンテナ側「/workdir」でappディレクトリとマウントしている
+    volumes:
+      - .:/workdir
